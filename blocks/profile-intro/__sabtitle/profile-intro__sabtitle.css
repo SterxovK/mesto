@@ -1,0 +1,14 @@
+.profile-intro__sabtitle {
+    margin: 0;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 880px) {
+    .profile-intro__sabtitle {
+        font-size: 14px;
+        line-height: 17px;
+        margin: auto;
+    }
+}
