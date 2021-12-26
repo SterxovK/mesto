@@ -9,8 +9,8 @@ let introName = document.querySelector('.profile-intro__title');
 let introJob = document.querySelector('.profile-intro__sabtitle');
 
 function EditProfile() {
-  //console.log('Мы кликнули по edit');
-  popupOpen.classList.remove(POPUP_CLASS);
+    //console.log('Мы кликнули по edit');
+    popupOpen.classList.remove(POPUP_CLASS);
 }
 
 function PopupClose(evt) {
@@ -22,7 +22,7 @@ function PopupClose(evt) {
 editButton.addEventListener('click', EditProfile);
 popupClose.addEventListener('click', PopupClose);
 
-function formSubmitHandler (evt) {
+function formSubmitHandler(evt) {
     evt.preventDefault(); 
 
     introName.textContent = nameInput.value;
@@ -30,3 +30,13 @@ function formSubmitHandler (evt) {
     PopupClose(evt);
 }
 formElement.addEventListener('submit', formSubmitHandler);
+
+function enterSaveClose(evt) {
+    if (evt.keyCode == 13) {
+      formSubmitHandler(evt);
+    }
+    else if (evt.keyCode == 27) {
+      PopupClose(evt)
+    }
+}
+formElement.addEventListener('keydown', enterSaveClose);
