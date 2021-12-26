@@ -3,7 +3,7 @@
 
 
 ### Ссылка на проект
-https://sterxovk.github.io/mesto/index.html
+https://sterxovk.github.io/mesto/
 
 ### Перечень используемых технологий
 * HTML
