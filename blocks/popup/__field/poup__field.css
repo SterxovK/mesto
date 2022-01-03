@@ -1,9 +1,7 @@
 .popup__field {
     margin-top: 30px;
     min-height: 24px;
-    font-size: 14px;
-    line-height: 16.94px;
-    font-weight: 400;
+    width: 100%;
     color: #000;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, .2);

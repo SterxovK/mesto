@@ -17,7 +17,7 @@
           <img class="profile__avatar" src="./images/Avatar.png" alt="Фото автора"/>
           <div class="profile-intro">
             <h1 class="profile-intro__title">Жак-Ив Кусто</h1>
-            <button class="profile-intro__edit-button button-hover "></button>
+            <button type="button" class="profile-intro__edit-button button-hover "></button>
             <p class="profile-intro__sabtitle">Исследователь океана</p>    
           </div>
         </div>
@@ -30,42 +30,42 @@
             <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
             <div class="card__group">
               <h2 class="card__title">Карачаевск</h2>
-              <button class="card__heart button-hover"></button>
+              <button type="button" class="card__heart"></button>
             </div>
           </li>
           <li class="card">
             <img class="card__image" src="./images/Elbrus.png" alt="Фото Эльбрус"/>
             <div class="card__group">
               <h2 class="card__title">Гора Эльбрус</h2>
-              <button class="card__heart button-hover"></button>
+              <button type="button" class="card__heart"></button>
             </div>
           </li>
           <li class="card">
             <img class="card__image" src="./images/dombay.png" alt="Фото Домбай"/>
             <div class="card__group">
               <h2 class="card__title">Домбай</h2>
-              <button class="card__heart button-hover"></button>
+              <button type="button" class="card__heart"></button>
             </div>
           </li>
           <li class="card">
             <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
             <div class="card__group">
               <h2 class="card__title">Карачаевск</h2>
-              <button class="card__heart button-hover"></button>
+              <button type="button" class="card__heart"></button>
             </div>
           </li>
           <li class="card">
             <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
             <div class="card__group">
               <h2 class="card__title">Карачаевск</h2>
-              <button class="card__heart button-hover"></button>
+              <button type="button" class="card__heart"></button>
             </div>
           </li>
           <li class="card">
             <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
             <div class="card__group">
               <h2 class="card__title">Карачаевск</h2>
-              <button class="card__heart button-hover"></button>
+              <button type="button" class="card__heart"></button>
             </div>
           </li>
         </ul>
@@ -76,15 +76,18 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup popup_opened">
-      <form class="popup__container">
-        <button class="popup__close button-hover"></button>
-        <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" placeholder="Жак-Ив Кусто" class="popup__field popup__field_with_name">
-        <input type="text" placeholder="Исследователь океана" class="popup__field popup__field_with_job">
-        <button class="popup__save-button button-hover" data-dismiss="modal">Сохранить</button>
-      </form>
+    <section class="popup">
+      <div class="popup__container">
+        <button type="button" class="popup__close button-hover"></button>
+        <h1 class="popup__title">Редактировать профиль</h1>
+        <form name="editProfile"> 
+          <input type="text" name="name" placeholder="Имя" value="Жак-Ив Кусто" class="popup__field popup__field_with_name">
+          <input type="text" name="job" placeholder="Статус" value="Исследователь океана"  class="popup__field popup__field_with_job">
+          <button type="submit" class="popup__save-button" data-dismiss="modal">Сохранить</button>
+        </form>
+      </div>
     </section>
+
 
     <script src="./scripts/script.js"></script>
 </body>
