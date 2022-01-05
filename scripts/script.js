@@ -2,7 +2,7 @@ let editButton = document.querySelector('.profile-intro__edit-button');
 let popupOpen = document.querySelector('.popup');
 let popupCloseBtn = document.querySelector('.popup__close');
 const popupClass = "popup_opened";
-let popupContainer = document.querySelector('.popup__container');
+let popupForm = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.popup__field_with_name');
 let jobInput = document.querySelector('.popup__field_with_job');
 let introName = document.querySelector('.profile-intro__title');
@@ -31,4 +31,4 @@ function formSubmitHandler(evt) {
     introJob.textContent = jobInput.value;
     popupClose(evt);
 }
-popupContainer.addEventListener('submit', formSubmitHandler);
+popupForm.addEventListener('submit', formSubmitHandler);
