@@ -32,3 +32,54 @@ function formSubmitHandler(evt) {
     popupClose(evt);
 }
 popupForm.addEventListener('submit', formSubmitHandler);
+
+const initialCards = [
+    {
+      name: 'Архыз',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+      name: 'Челябинская область',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+      name: 'Иваново',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+      name: 'Камчатка',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+      name: 'Холмогорский район',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+      name: 'Байкал',
+      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+  ]; 
+//добавляем карточки из template
+const cardTemplate = document.querySelector('#template-card').content;
+const cardList = document.querySelector('.cards__list');
+
+function galleryAddItems(card) {
+const item = cardTemplate.querySelector('.card').cloneNode(true);
+item.querySelector('.card__image').style.backgroundImage = `url('${card.link}')`;
+item.querySelector('.card__title').textContent = card.name;
+cardList.append(item);
+}
+//идем по массиву и добавляем значения
+initialCards.forEach(galleryAddItems);
+
+
+//НЕ НРАВИТСЯ КАК НАПИСАНО
+// выберем кнопки удаления(корзины) добавили в массив
+const cardBasket = document.querySelectorAll('.card__basket');
+// добавим обработчик на каждую кнопку
+for (let i = 0; i < cardBasket.length; i++) {
+  cardBasket[i].addEventListener('click', function (evt) {
+  const listItem = evt.target.closest('.card');
+  listItem.remove();
+});
+}

@@ -26,50 +26,21 @@
 
       <section class="cards">
         <ul class="cards__list">
-          <li class="card">
-            <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
-            <button class="card__basket button-hover"></button>
-            <div class="card__group">
-              <h2 class="card__title">Карачаевск</h2>
-              <button type="button" class="card__heart"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/Elbrus.png" alt="Фото Эльбрус"/>
-            <div class="card__group">
-              <h2 class="card__title">Гора Эльбрус</h2>
-              <button type="button" class="card__heart"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/dombay.png" alt="Фото Домбай"/>
-            <div class="card__group">
-              <h2 class="card__title">Домбай</h2>
-              <button type="button" class="card__heart"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
-            <div class="card__group">
-              <h2 class="card__title">Карачаевск</h2>
-              <button type="button" class="card__heart"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
-            <div class="card__group">
-              <h2 class="card__title">Карачаевск</h2>
-              <button type="button" class="card__heart"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/karachaevsk.jpg" alt="Фото Карачаевск"/>
-            <div class="card__group">
-              <h2 class="card__title">Карачаевск</h2>
-              <button type="button" class="card__heart"></button>
-            </div>
-          </li>
+          <!-- тут будут вставляться карточки из js-->
+    
         </ul>
+
+        <template id="template-card">
+          <li class="card">
+            <div class="card__image"></div>
+            <button  type="button" class="card__basket button-hover"></button>
+            <div class="card__group">
+              <h2 class="card__title"></h2>
+              <button type="button" class="card__heart"></button>
+            </div>
+          </li>
+        </template>
+
       </section>
     </main>
 
