@@ -27,20 +27,7 @@
       <section class="cards">
         <ul class="cards__list">
           <!-- тут будут вставляться карточки из js-->
-    
         </ul>
-
-        <template id="template-card">
-          <li class="card">
-            <div class="card__image"></div>
-            <button  type="button" class="card__basket button-hover"></button>
-            <div class="card__group">
-              <h2 class="card__title"></h2>
-              <button type="button" class="card__heart"></button>
-            </div>
-          </li>
-        </template>
-
       </section>
     </main>
 
@@ -48,7 +35,7 @@
       <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
 
-    <section class="popup">
+    <section class="popup popup_type_edit-profile">
       <div class="popup__container">
         <button type="button" class="popup__close button-hover"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
@@ -59,6 +46,39 @@
         </form>
       </div>
     </section>
+
+    <section class="popup popup_type_add-cards">
+      <div class="popup__container">
+        <button type="button" class="popup__close button-hover"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <form name="editProfile" class="popup__form popup__form-add-card">
+          <input type="text" name="name" placeholder="Название"  class="popup__field popup__field_with_card-name">
+          <input type="text" name="link" placeholder="Ссылка на картинку" class="popup__field popup__field_with_card-link">
+          <button type="submit" class="popup__save-button" data-dismiss="modal">Сохранить</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="popup popup_type_show-cards">
+      <div class="popup__container popup__container_type_show-cards">
+      <button type="button" class="popup__close button-hover"></button>
+        <figure class="popup__show-card">
+          <img class="popup__image" src="" alt="Контентное изображение"/>
+          <figcaption class="popup__caption"></figcaption>
+        </figure>
+      </div>
+    </section>
+
+     <template id="template-card">
+        <li class="card">
+          <div class="card__image"></div>
+          <button  type="button" class="card__basket button-hover"></button>
+          <div class="card__group">
+            <h2 class="card__title"></h2>
+            <button type="button" class="card__heart"></button>
+          </div>
+        </li>
+      </template>
 
 
     <script src="./scripts/script.js"></script>
