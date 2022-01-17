@@ -92,6 +92,7 @@ function createCard(name, link) {
     //ПОЛУЧИТЬ http БЕЗ УРЛ!!!!
     const imgHttp = cardImage.style.backgroundImage.replace(/(url\(|\)|")/g,"");
     popupImage.src = imgHttp;
+    popupImage.alt = "Фото " + popupCaption.textContent;
   });
   return newCard;
 }
