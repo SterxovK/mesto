@@ -28,8 +28,8 @@ editBtn.addEventListener("click", () => {
 });
 
 //Слушатель и функция присовения значений по клику на Сохранить попапа редактирования профиля
-popupForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
+popupForm.addEventListener("submit", (event) => {
+  event.preventDefault();
   introName.textContent = nameInput.value;
   introJob.textContent = jobInput.value;
   closePopup(popupEditProfile);
@@ -90,7 +90,10 @@ function createCard(name, link) {
     //Присвоить значения переменных
     popupCaption.textContent = cardTitle.textContent;
     //ПОЛУЧИТЬ http БЕЗ УРЛ!!!!
-    const imgHttp = cardImage.style.backgroundImage.replace(/(url\(|\)|")/g,"");
+    const imgHttp = cardImage.style.backgroundImage.replace(
+      /(url\(|\)|")/g,
+      ""
+    );
     popupImage.src = imgHttp;
     popupImage.alt = "Фото " + popupCaption.textContent;
   });
@@ -104,11 +107,10 @@ initialCards.forEach((card) =>
 const nameCardInput = document.querySelector(".popup__field_with_card-name");
 const linkCardInput = document.querySelector(".popup__field_with_card-link");
 // Создание карточки через импут
-formAddCard.addEventListener("submit", (evt) => {
-  evt.preventDefault();
+formAddCard.addEventListener("submit", (event) => {
+  event.preventDefault();
   cardList.prepend(createCard(nameCardInput.value, linkCardInput.value));
-  nameCardInput.value = "";
-  linkCardInput.value = "";
+  clearField();
   closePopup(popupAddCard);
 });
 
@@ -144,3 +146,25 @@ function closePopup(popup) {
   popup.classList.remove(popupClass);
 }
 
+//owerlay && esc
+const popupArr = document.querySelectorAll(".popup");
+const page = document.querySelector(".page");
+popupArr.forEach((popup) => {
+  page.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      clearField();
+      closePopup(popup);
+    }
+  });
+  page.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      clearField();
+      closePopup(popup);
+    }
+  });
+});
+
+function clearField() {
+  nameCardInput.value = "";
+  linkCardInput.value = "";
+}
