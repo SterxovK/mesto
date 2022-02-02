@@ -106,22 +106,32 @@ initialCards.forEach((card) =>
 
 const nameCardInput = document.querySelector(".popup__field_with_card-name");
 const linkCardInput = document.querySelector(".popup__field_with_card-link");
+
 // Создание карточки через импут
 formAddCard.addEventListener("submit", (event) => {
   event.preventDefault();
   cardList.prepend(createCard(nameCardInput.value, linkCardInput.value));
-  clearField();
+  nameCardInput.value = "";
+  linkCardInput.value = "";
+  //Деактивировать кнопку сабмита. ПОДУМАТЬ ЕЩЕ КАК ПРАВИЛЬНО!!
+  const saveBtn = formAddCard.querySelector(".popup__save-button");
+  saveBtn.setAttribute("disabled", "disabled");
+  saveBtn.classList.add("popup__save-button_inactive");
   closePopup(popupAddCard);
 });
 
-//добавил массив всех крестиков попапов и навесил удаление
-const popupCloseArr = document.querySelectorAll(".popup__close");
-popupCloseArr.forEach((popupClose) => {
-  popupClose.addEventListener("click", (event) => {
-    event.preventDefault();
-    closePopup(popupClose.closest(".popup"));
-  });
-});
+//добавил массив всех попапов и навесил удаление по проверке клика на оверлей и крестсик
+ const popups = document.querySelectorAll(".popup");
+ popups.forEach((popup) => {
+   popup.addEventListener("click", (evt) => {
+     if (evt.target.classList.contains("popup_opened")) {
+       closePopup(popup);
+     }
+     if (evt.target.classList.contains("popup__close")) {
+       closePopup(popup);
+     }
+   });
+ });
 
 //функция удаления карточек
 function removeNewCard(element) {
@@ -136,35 +146,24 @@ function activeHeart(element) {
   });
 }
 
-//функция открытия попапов
+//функция открытия попапов + обработчик esc
 function openPopup(popup) {
   popup.classList.add(popupClass);
+  document.addEventListener("keydown", closeByEscape);
 }
 
-//функция закрытия попапов
+//функция закрытия попапов - обработчик esc
 function closePopup(popup) {
   popup.classList.remove(popupClass);
+  document.removeEventListener("keydown", closeByEscape);
 }
 
-//owerlay && esc
-const popupArr = document.querySelectorAll(".popup");
-const page = document.querySelector(".page");
-popupArr.forEach((popup) => {
-  page.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      clearField();
-      closePopup(popup);
-    }
-  });
-  page.addEventListener("click", (event) => {
-    if (event.target === popup) {
-      clearField();
-      closePopup(popup);
-    }
-  });
-});
 
-function clearField() {
-  nameCardInput.value = "";
-  linkCardInput.value = "";
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    // найти открытый попап
+    const openedPopup = document.querySelector(".popup_opened");
+    closePopup(openedPopup);
+  }
 }
+
