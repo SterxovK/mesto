@@ -72,7 +72,6 @@ const initialCards = [
 
 const cardTemplate = document.querySelector("#template-card").content;
 const cardList = document.querySelector(".cards__list");
-const formAddCard = document.querySelector(".popup__form-add-card");
 
 // Функция создания новой карточки
 function createCard(name, link) {
@@ -106,6 +105,8 @@ initialCards.forEach((card) =>
 
 const nameCardInput = document.querySelector(".popup__field_with_card-name");
 const linkCardInput = document.querySelector(".popup__field_with_card-link");
+const formAddCard = document.querySelector(".popup__form-add-card");
+const saveBtn = formAddCard.querySelector(".popup__save-button");
 
 // Создание карточки через импут
 formAddCard.addEventListener("submit", (event) => {
@@ -113,25 +114,24 @@ formAddCard.addEventListener("submit", (event) => {
   cardList.prepend(createCard(nameCardInput.value, linkCardInput.value));
   nameCardInput.value = "";
   linkCardInput.value = "";
-  //Деактивировать кнопку сабмита. ПОДУМАТЬ ЕЩЕ КАК ПРАВИЛЬНО!!
-  const saveBtn = formAddCard.querySelector(".popup__save-button");
+  //Деактивировать кнопку сабмита.
   saveBtn.setAttribute("disabled", "disabled");
   saveBtn.classList.add("popup__save-button_inactive");
   closePopup(popupAddCard);
 });
 
 //добавил массив всех попапов и навесил удаление по проверке клика на оверлей и крестсик
- const popups = document.querySelectorAll(".popup");
- popups.forEach((popup) => {
-   popup.addEventListener("click", (evt) => {
-     if (evt.target.classList.contains("popup_opened")) {
-       closePopup(popup);
-     }
-     if (evt.target.classList.contains("popup__close")) {
-       closePopup(popup);
-     }
-   });
- });
+const popups = document.querySelectorAll(".popup");
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup_opened")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains("popup__close")) {
+      closePopup(popup);
+    }
+  });
+});
 
 //функция удаления карточек
 function removeNewCard(element) {
@@ -158,12 +158,10 @@ function closePopup(popup) {
   document.removeEventListener("keydown", closeByEscape);
 }
 
-
 function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
+  if (evt.key === "Escape") {
     // найти открытый попап
     const openedPopup = document.querySelector(".popup_opened");
     closePopup(openedPopup);
   }
 }
-
