@@ -52,7 +52,7 @@ const enableValidation = () => {
 //enableValidation();
 enableValidation({
   formSelector: ".popup__form",
-  inputSelector: ".popup__input",
+  inputSelector: ".popup__field",
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_inactive",
   inputErrorClass: "popup__field_type_error",
