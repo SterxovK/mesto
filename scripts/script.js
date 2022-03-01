@@ -50,6 +50,7 @@ addBtn.addEventListener("click", () => {
 
 const cardTemplate = document.querySelector("#template-card").content;
 const cardList = document.querySelector(".cards__list");
+const formAddCard = document.querySelector(".popup__form-add-card");
 
 //ТУТ НУЖЕН ИМПОРТ КЛАССА КАРД
 // Создание карточек через массив
@@ -69,10 +70,9 @@ initialCards.forEach((initialCard) => {
 
 const nameCardInput = document.querySelector(".popup__field_with_card-name");
 const linkCardInput = document.querySelector(".popup__field_with_card-link");
-const formAddCard = document.querySelector(".popup__form-add-card");
-const saveBtn = formAddCard.querySelector(".popup__save-button");
-
-
+// Создание карточки через импут
+formAddCard.addEventListener("submit", (event) => {
+  event.preventDefault();
   const card = new Card(
     {
       name: nameCardInput.value,
@@ -84,44 +84,49 @@ const saveBtn = formAddCard.querySelector(".popup__save-button");
   cardList.prepend(cardElement);
   clearField();
   closePopup(addCardForm);
+});
 
+//добавил массив всех крестиков попапов и навесил удаление
+const popupCloseArr = document.querySelectorAll(".popup__close");
+popupCloseArr.forEach((popupClose) => {
+  popupClose.addEventListener("click", (event) => {
+    event.preventDefault();
+    closePopup(popupClose.closest(".popup"));
+  });
+});
 
+//функция открытия попапов
+function openPopup(popup) {
+  popup.classList.add(popupClass);
+}
 
-//добавил массив всех попапов и навесил удаление по проверке клика на оверлей и крестсик
-const popups = document.querySelectorAll(".popup");
-popups.forEach((popup) => {
-  popup.addEventListener("click", (evt) => {
-    if (evt.target.classList.contains("popup_opened")) {
+//функция закрытия попапов
+function closePopup(popup) {
+  popup.classList.remove(popupClass);
+}
+
+//owerlay && esc
+const popupArr = document.querySelectorAll(".popup");
+const page = document.querySelector(".page");
+popupArr.forEach((popup) => {
+  page.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      clearField();
       closePopup(popup);
     }
-    if (evt.target.classList.contains("popup__close")) {
+  });
+  page.addEventListener("click", (event) => {
+    if (event.target === popup) {
+      clearField();
       closePopup(popup);
     }
   });
 });
 
-//функция открытия попапов
-
-function openPopup(popup) {
-  popup.classList.add(popupClass);
-  document.addEventListener("keydown", closeByEscape);
+function clearField() {
+  nameCardInput.value = "";
+  linkCardInput.value = "";
 }
-
-//функция закрытия попапов - обработчик esc
-function closePopup(popup) {
-  popup.classList.remove(popupClass);
-  document.removeEventListener("keydown", closeByEscape);
-}
-
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    // найти открытый попап
-    const openedPopup = document.querySelector(".popup_opened");
-    closePopup(openedPopup);
-  }
-}
-
-
 
 const editFormValidator = new FormValidator(config, editForm);
 const addFormValidator = new FormValidator(config, addCardForm);
