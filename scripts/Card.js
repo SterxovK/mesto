@@ -62,4 +62,3 @@ export class Card {
     popupTypeShowCards.classList.toggle(popupClass);
   }
 }
-

@@ -72,16 +72,3 @@ export class FormValidator {
     this._setEventListeners();
   }
 }
-//const config = {
-//  formSelector: ".popup__form",
-//  inputSelector: ".popup__field",
-//  submitButtonSelector: ".popup__save-button",
-//  inactiveButtonClass: "popup__save-button_inactive",
-//  inputErrorClass: "popup__field_type_error",
-//  errorClass: "popup__field-error_active",
-//};
-//const editForm = document.querySelector(".popup_type_edit-profile");
-//const addCardForm = document.querySelector(".popup_type_add-cards");
-
-//const editFormValidator = new FormValidator(config, editForm);
-//const addFormValidator = new FormValidator(config, addCardForm);
