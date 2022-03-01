@@ -85,7 +85,7 @@ const saveBtn = formAddCard.querySelector(".popup__save-button");
   clearField();
   closePopup(addCardForm);
 
-});
+
 
 //добавил массив всех попапов и навесил удаление по проверке клика на оверлей и крестсик
 const popups = document.querySelectorAll(".popup");
