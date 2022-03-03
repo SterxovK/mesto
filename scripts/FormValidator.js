@@ -11,14 +11,14 @@ export class FormValidator {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add(errorClass);
+    //errorElement.classList.add(errorClass);
   };
 
   _hideInputError = (inputElement) => {
     const { errorClass, inputErrorClass } = this._settings;
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(inputErrorClass);
-    errorElement.classList.remove(errorClass);
+    //errorElement.classList.remove(errorClass);
     errorElement.textContent = "";
   };
 
@@ -35,7 +35,7 @@ export class FormValidator {
       return !inputElement.validity.valid;
     });
   };
-  _disableSabmitButton = () => {
+  disableSabmitButton = () => {
     const { inactiveButtonClass } = this._settings;
     this._submitButtonSelector.classList.add(inactiveButtonClass);
     this._submitButtonSelector.disabled = true;
@@ -48,7 +48,7 @@ export class FormValidator {
 
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this._disableSabmitButton();
+      this.disableSabmitButton();
     } else {
       this._enableButtonstate();
     }

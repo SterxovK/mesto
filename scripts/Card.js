@@ -3,8 +3,8 @@ import {
   popupImage,
   popupCaption,
   popupTypeShowCards,
-  popupClass,
-} from "./script.js";
+} from "./constants.js";
+import { openPopup} from "./utils.js";
 
 export class Card {
   constructor(data, cardTemplate) {
@@ -46,6 +46,7 @@ export class Card {
 
   _handleRemoveNewCardClick() {
     this._element.remove();
+    this._element = null;
   }
   _handleActiveHeart() {
     this._element
@@ -53,12 +54,9 @@ export class Card {
       .classList.toggle(activeHeartClass);
   }
   _handleOpenPopup() {
-    popupImage.src = this._element
-      .querySelector(".card__image")
-      .style.backgroundImage.replace(/(url\(|\)|")/g, "");
-    popupImage.alt = "Фото " + popupCaption.textContent;
-    popupCaption.textContent =
-      this._element.querySelector(".card__title").textContent;
-    popupTypeShowCards.classList.toggle(popupClass);
+    popupImage.src = this._link;
+    popupImage.alt = "Фото " + this._name;
+    popupCaption.textContent = this._name;
+    openPopup(popupTypeShowCards);
   }
 }

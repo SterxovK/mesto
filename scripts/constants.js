@@ -1,10 +1,18 @@
+export const popupClass = "popup_opened";
+export const activeHeartClass = "card__heart_active";
+export const popupTypeShowCards = document.querySelector(
+  ".popup_type_show-cards"
+);
+export const popupCaption = document.querySelector(".popup__caption");
+export const popupImage = document.querySelector(".popup__image");
+
 export const config = {
   formSelector: ".popup__form",
   inputSelector: ".popup__field",
   submitButtonSelector: ".popup__save-button",
   inactiveButtonClass: "popup__save-button_inactive",
   inputErrorClass: "popup__field_type_error",
-  errorClass: "popup__field-error_active",
+  //errorClass: "popup__field-error_active",
 };
 
 export const initialCards = [
