@@ -35,25 +35,26 @@ addFormValidator.enableValidation();
 
 const handleCardFormSubmit = (evt) => {
   evt.preventDefault();
-  renderCard(
+  const addImage = 
     { name: nameCardInput.value, 
       link: linkCardInput.value 
-    },
-    cardList
-  );
+    }
+  cardList.prepend(renderCard(addImage));
   closePopup(addCardForm);
   clearField();
 };
 
-const renderCard = (data, cardList) => {
+const renderCard = (data) => {
   const card = new Card(data, cardTemplate);
   const cardElement = card.generateCard();
-  cardList.prepend(cardElement);
+  return cardElement;
+  //cardList.prepend(cardElement);
 };
 
 // Создание карточки через массив
 initialCards.forEach((data) => {
-  renderCard(data, cardList);
+  cardList.prepend(renderCard(data));
+  
 });
 // слушатель Создание карточки через импут
 addCardForm.addEventListener("submit", handleCardFormSubmit);
