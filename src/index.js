@@ -1,6 +1,7 @@
-import { Section } from "../components/Section.js";
-import { Card } from "../components/Card.js";
-import { FormValidator } from "../components/FormValidator.js";
+import "./index.css";
+import { Section } from "./components/Section.js";
+import { Card } from "./components/Card.js";
+import { FormValidator } from "./components/FormValidator.js";
 import {
   config,
   initialCards,
@@ -17,10 +18,10 @@ import {
   popupTypeShowCardsSelector,
   addCardFormSelector,
   popupEditProfileSelector,
-} from "../utils/constants.js";
-import { PopupWithImage } from "../components/PopupWithImage.js";
-import { PopupWithForm } from "../components/PopupWithForm.js";
-import { UserInfo } from "../components/UserInfo.js";
+} from "./utils/constants.js";
+import { PopupWithImage } from "./components/PopupWithImage.js";
+import { PopupWithForm } from "./components/PopupWithForm.js";
+import { UserInfo } from "./components/UserInfo.js";
 
 const photoPopup = new PopupWithImage(popupTypeShowCardsSelector);
 

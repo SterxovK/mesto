@@ -4,19 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./index.css" />
     <title>Место</title>
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Логотип Место" />
+      <img
+        class="header__logo"
+        src= "<%=require('./images/logo.svg')%>"
+        alt="Логотип Место"
+      />
     </header>
     <main class="content">
       <section class="profile">
         <div class="profile__block">
           <img
             class="profile__avatar"
-            src="./images/Avatar.png"
+            src= "<%=require('./images/Avatar.png')%>"
             alt="Фото автора"
           />
           <div class="profile-intro">
@@ -133,7 +136,5 @@
         </div>
       </li>
     </template>
-
-    <script type="module" src="./pages/index.js" defer></script>
   </body>
 </html>
