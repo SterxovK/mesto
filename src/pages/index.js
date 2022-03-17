@@ -65,20 +65,39 @@ const popupWithInfoForm = new PopupWithForm(popupEditProfileSelector, {
   },
 });
 
-const editFormValidator = new FormValidator(config, editForm);
-const addFormValidator = new FormValidator(config, addCardForm);
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
+// const editFormValidator = new FormValidator(config, editForm);
+// const addFormValidator = new FormValidator(config, addCardForm);
+// editFormValidator.enableValidation();
+// addFormValidator.enableValidation();
+
+const formValidators = {};
+// Включение валидации
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    // получаем данные из атрибута `name` у формы
+    const formName = formElement.getAttribute("name");
+    // вот тут в объект записываем под именем формы
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(config);
+
 
 editBtn.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
   nameInput.value = userData.name;
   jobInput.value = userData.job;
   popupWithInfoForm.open();
-  editFormValidator.resetValidation();
+  //editFormValidator.resetValidation();
+  formValidators["editProfile"].resetValidation();
 });
 
 addBtn.addEventListener("click", () => {
   popupWithAddForm.open();
-  addFormValidator.resetValidation();
+  //addFormValidator.resetValidation();
+  formValidators["addCard"].resetValidation();
 });
