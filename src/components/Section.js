@@ -5,8 +5,10 @@ export class Section {
     this._container = document.querySelector(cardListSelector);
   }
 
-  addItem(element) {
-    this._container.prepend(element);
+ 
+
+  addItem(item) {
+    this._container.prepend(item);
   }
 
   renderItems() {

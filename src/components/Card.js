@@ -10,11 +10,14 @@ export class Card {
   }
   generateCard() {
     this._element = this._getTemplate();
+    this._cardTitle = this._element.querySelector(".card__title");
+    this._cardImage = this._element.querySelector(".card__image");
+    this._cardHeart = this._element.querySelector(".card__heart");
+    this._cardBasket = this._element.querySelector(".card__basket");
+
     this._setEventListeners();
-    this._element.querySelector(
-      ".card__image"
-    ).style.backgroundImage = `url('${this._data.link}')`;
-    this._element.querySelector(".card__title").textContent = this._data.name;
+    this._cardImage.style.backgroundImage = `url('${this._data.link}')`;
+    this._cardTitle.textContent = this._data.name;
     return this._element;
   }
 
@@ -24,26 +27,18 @@ export class Card {
   }
 
   _handleActiveHeart() {
-    this._element
-      .querySelector(".card__heart")
-      .classList.toggle("card__heart_active");
+    this._cardHeart.classList.toggle("card__heart_active");
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".card__basket")
-      .addEventListener("click", () => {
-        this._handleRemoveNewCardClick();
-      });
-    this._element
-      .querySelector(".card__heart")
-      .addEventListener("click", () => {
-        this._handleActiveHeart();
-      });
-    this._element
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleCardClick(this._data);
-      });
+    this._cardBasket.addEventListener("click", () => {
+      this._handleRemoveNewCardClick();
+    });
+    this._cardHeart.addEventListener("click", () => {
+      this._handleActiveHeart();
+    });
+    this._cardImage.addEventListener("click", () => {
+      this._handleCardClick(this._data);
+    });
   }
 }

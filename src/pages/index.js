@@ -1,7 +1,7 @@
 import "./index.css";
-import { Section } from "./components/Section.js";
-import { Card } from "./components/Card.js";
-import { FormValidator } from "./components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
 import {
   config,
   initialCards,
@@ -18,10 +18,10 @@ import {
   popupTypeShowCardsSelector,
   addCardFormSelector,
   popupEditProfileSelector,
-} from "./utils/constants.js";
-import { PopupWithImage } from "./components/PopupWithImage.js";
-import { PopupWithForm } from "./components/PopupWithForm.js";
-import { UserInfo } from "./components/UserInfo.js";
+} from "../utils/constants.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 
 const photoPopup = new PopupWithImage(popupTypeShowCardsSelector);
 
@@ -68,15 +68,17 @@ const popupWithInfoForm = new PopupWithForm(popupEditProfileSelector, {
 const editFormValidator = new FormValidator(config, editForm);
 const addFormValidator = new FormValidator(config, addCardForm);
 editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 
 editBtn.addEventListener("click", () => {
   const userData = userInfo.getUserInfo();
   nameInput.value = userData.name;
   jobInput.value = userData.job;
   popupWithInfoForm.open();
+  editFormValidator.resetValidation();
 });
 
 addBtn.addEventListener("click", () => {
   popupWithAddForm.open();
-  addFormValidator.enableValidation();
+  addFormValidator.resetValidation();
 });
