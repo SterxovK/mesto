@@ -5,11 +5,23 @@ export class PopupWithForm extends Popup {
     super(popupSelector);
     this._callBackSubmitForm = callBackSubmitForm;
     this._form = this._popupElement.querySelector(".popup__form");
-    this._inputs = Array.from(this._form.querySelectorAll(".popup__field"));
+    this._submitButton = this._popupElement.querySelector(
+      ".popup__save-button"
+    );
+    this._initialValueSubmitButton = this._submitButton.textContent;
     this._handlerSubmitEvt = this._hendlerSubmitEvt.bind(this);
   }
 
+  loading(isLoading, initialDownloadMessage = "Cохранение...") {
+    if (isLoading) {
+      this._submitButton.textContent = initialDownloadMessage;
+    } else {
+      this._submitButton.textContent = this._initialValueSubmitButton;
+    }
+  }
+
   _getInputValues() {
+    this._inputs = Array.from(this._form.querySelectorAll(".popup__field"));
     const data = {};
     this._inputs.forEach((input) => {
       data[input.name] = input.value;

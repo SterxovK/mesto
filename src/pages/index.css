@@ -60,3 +60,7 @@
 @import url(../blocks/popup/__caption/popup__caption.css);
 @import url(../blocks/popup/__image/popup__image.css);
 @import url(../blocks/popup/__container/_type/popup__container_type_show-cards.css);
+@import url(../blocks/card/__counter-likes/card__counter-likes.css);
+
+@import url(../blocks/profile/__avatar-edit-button/profile__avatar-edit-button.css);
+@import url(../blocks/popup/_type/popup_type_edit-avatar.css);
