@@ -6,8 +6,8 @@ import {
   config,
   //initialCards,
   editBtn,
-  editForm,
-  addCardForm,
+  //editForm,
+  //addCardForm,
   nameInput,
   jobInput,
   addBtn,
@@ -61,18 +61,19 @@ const popupWithRemoveComfirm = new PopupWithRemoveComfirm(
   popupWithRemoveComfirmSelector,
   {
     submit: (data) => {
-      //ТУТ НИЧЕГО НЕ ПРОИСХОДИТ
       api
         .deleteCard(data)
         .then(() => {
-          tempCard.deleteCard();
+          tempCard.removeElement();
         })
         .then(() => {
           tempCard = null;
-          popupWithConfirm.close();
         })
         .catch((err) => {
           console.log(err);
+        })
+        .finally(() => {
+          popupWithRemoveComfirm.close();
         });
     },
   }
@@ -122,25 +123,24 @@ const photoPopup = new PopupWithImage(popupTypeShowCardsSelector);
 const createNewCard = (data) => {
   const card = new Card(data, cardTemplate, ownerId, {
     handleCardClick: (data) => {
+      console.log(ownerId);
       photoPopup.open(data);
     },
     handleRemoveCard: () => {
-      //console.log(ownerId);
       tempCard = card;
       popupWithRemoveComfirm.open(data);
     },
-    handleLikeClick: (data) => {
+    handleLikeClick: () => {
       api
         .setLikes(data)
-        .then((data) => {
-          console.log(data);
+        .then((data) => { 
           card.setLikeCount(data);
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    handleRemoveLike: (data) => {
+    handleRemoveLike: () => {
       api
         .deleteLikes(data)
         .then((data) => {
@@ -150,7 +150,7 @@ const createNewCard = (data) => {
           console.log(err);
         });
     },
-  });
+   });
   return card;
 };
 
@@ -165,7 +165,6 @@ const section = new Section(
   },
   cardListSelector
 );
-//section.renderItems();
 
 const popupWithAddForm = new PopupWithForm(addCardFormSelector, {
   callBackSubmitForm: (data) => {

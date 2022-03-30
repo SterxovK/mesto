@@ -69,8 +69,8 @@ export default class Api {
     return this._makeRequest(promise);
   }
 
-  deleteCard(id) {
-    const promise = fetch(`${this._url}cards` / `${id}`, {
+  deleteCard(data) {
+    const promise = fetch(`${this._url}cards/${data._id}`, {
       method: "DELETE",
       headers: {
         authorization: this._headers,
@@ -78,8 +78,8 @@ export default class Api {
     });
     return this._makeRequest(promise);
   }
-  setLikes(id) {
-    const promise = fetch(`${this._url}cards/${id}/likes`, {
+  setLikes(data) {
+    const promise = fetch(`${this._url}cards/${data._id}/likes`, {
       method: "PUT",
       headers: {
         authorization: this._headers,
@@ -87,8 +87,8 @@ export default class Api {
     });
     return this._makeRequest(promise);
   }
-  deleteLikes(id) {
-    const promise = fetch(`${this._url}cards/${id}/likes`, {
+  deleteLikes(data) {
+    const promise = fetch(`${this._url}cards/${data._id}/likes`, {
       method: "DELETE",
       headers: {
         authorization: this._headers,
