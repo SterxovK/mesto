@@ -10,6 +10,8 @@ https://sterxovk.github.io/mesto/
 * CSS Flex
 * CSS Grid Layout
 * javaScript
+* webpack
+* Api
 
 **Описаие проекта**
 
