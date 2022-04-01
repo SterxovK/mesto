@@ -68,13 +68,11 @@ const popupWithRemoveComfirm = new PopupWithRemoveComfirm(
         })
         .then(() => {
           tempCard = null;
+          popupWithRemoveComfirm.close();
         })
         .catch((err) => {
           console.log(err);
         })
-        .finally(() => {
-          popupWithRemoveComfirm.close();
-        });
     },
   }
 );
@@ -88,13 +86,13 @@ const popupEditAvatar = new PopupWithForm(popupEditAvatarSelector, {
       .then((res) => {
         console.log(res);
         userInfo.setUserAvatar(res);
+        popupEditAvatar.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        popupEditAvatar.loading(false);
-        popupEditAvatar.close();
+        popupEditAvatar.loading(false);  
       });
   },
 });
@@ -106,13 +104,13 @@ const popupWithInfoForm = new PopupWithForm(popupEditProfileSelector, {
       .setUserInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
+        popupWithInfoForm.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        popupWithInfoForm.loading(false);
-        popupWithInfoForm.close();
+        popupWithInfoForm.loading(false);  
       });
   },
 });
@@ -135,6 +133,7 @@ const createNewCard = (data) => {
         .setLikes(data)
         .then((data) => { 
           card.setLikeCount(data);
+          card.handleActiveHeart();
         })
         .catch((err) => {
           console.log(err);
@@ -145,6 +144,7 @@ const createNewCard = (data) => {
         .deleteLikes(data)
         .then((data) => {
           card.setLikeCount(data);
+          card.handleActiveHeart();
         })
         .catch((err) => {
           console.log(err);
@@ -175,13 +175,13 @@ const popupWithAddForm = new PopupWithForm(addCardFormSelector, {
         const card = createNewCard(res);
         const cardElement = card.generateCard();
         section.addItem(cardElement);
+        popupWithAddForm.close();
       })
       .catch((err) => {
         console.log(err);
       })
       .finally(() => {
-        popupWithAddForm.loading(false);
-        popupWithAddForm.close();
+        popupWithAddForm.loading(false);        
       });
   },
 });
@@ -218,4 +218,5 @@ addBtn.addEventListener("click", () => {
 //открытие формы редактирования аватара
 editAvatarBtn.addEventListener("click", () => {
   popupEditAvatar.open();
+  formValidators["removeCard"].resetValidation();
 });

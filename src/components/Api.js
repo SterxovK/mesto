@@ -9,16 +9,18 @@ export default class Api {
         if (res.ok) {
           return res.json();
         }
-        throw "Ошибка запроса";
+        return Promise.reject(`Ошибка: ${res.status}`);
+      //  throw "Ошибка запроса";
       })
       .then((obj) => {
         console.log(obj);
         return obj;
       })
-      .catch((err) => {
-        console.error(err);
-        throw err;
-      });
+      
+      // .catch((err) => {
+      //   console.error(err);
+      //   throw err;
+      // });
   }
   getUserInfo() {
     const promise = fetch(`${this._url}users/me`, {
