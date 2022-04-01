@@ -49,7 +49,7 @@ export class Card {
   _checkLikedState() {
     this._data.likes.forEach((likeOwner) => {
       if (likeOwner._id === this._ownerId) {
-        this._handleActiveHeart();
+        this.handleActiveHeart();
       }
     });
   }
@@ -68,7 +68,7 @@ export class Card {
     this._cardCounterLikes.textContent = String(data.likes.length);
   }
 
-  _handleActiveHeart() {
+  handleActiveHeart() {
     this._cardHeart.classList.toggle(this._heartActiveClass);
   }
 
@@ -79,10 +79,10 @@ export class Card {
     this._cardHeart.addEventListener("click", () => {
        if (this._cardHeart.classList.contains(this._heartActiveClass)) {
          this._handleRemoveLike(this._data);
-         this._handleActiveHeart();
+        // this._handleActiveHeart();
        } else {
          this._handleLikeClick(this._data);
-         this._handleActiveHeart();
+        // this._handleActiveHeart();
        }
     });
        
