@@ -5,6 +5,18 @@
 ### Ссылка на проект
 https://sterxovk.github.io/mesto/
 
+### Инструкция по установке:
+```
+git clone https://github.com/SterxovK/mesto.git
+
+cd mesto
+
+npm i webpack --save-dev
+
+npm run build
+
+npm run dev
+```
 ### Перечень используемых технологий
 * HTML
 * CSS Flex
